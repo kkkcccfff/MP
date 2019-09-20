@@ -7,12 +7,26 @@
       </van-search>
     </div>
     <div class="select-info-box">
-      <van-cell title="生产线" is-link arrow-direction="down" :border="borderShow" value="请选择" />
-      <van-cell title="PO列表" is-link arrow-direction="down" :border="borderShow" value="请选择" />
+      <van-cell
+        title="生产线"
+        is-link
+        arrow-direction="down"
+        :border="borderShow"
+        value="请选择"
+        class="cell-padding-common"
+      />
+      <van-cell
+        title="PO列表"
+        is-link
+        arrow-direction="down"
+        :border="borderShow"
+        value="请选择"
+        class="cell-padding-common"
+      />
       <van-cell-group>
-        <van-field v-model="valuePo" label="PO" placeholder="请输入PO" />
-        <van-field v-model="valuePo" label="贴纸号" placeholder="请输入贴纸号" />
-        <van-field v-model="valuePo" label="查片数" placeholder="请输入查片数" />
+        <van-field v-model="valuePo" label="PO" placeholder="请输入PO" class="cell-padding-common" />
+        <van-field v-model="valuePo" label="贴纸号" placeholder="请输入贴纸号" class="cell-padding-common" />
+        <van-field v-model="valuePo" label="查片数" placeholder="请输入查片数" class="cell-padding-common" />
       </van-cell-group>
     </div>
   </div>
@@ -38,17 +52,21 @@ export default {
   width: 94vw;
   background: #f8f8f8;
   //   background: gray;
-  padding: 0 3vw; 
+  padding: 0 3vw;
   .search-box {
     margin-left: 2rem;
-    margin-right: 2rem; 
+    margin-right: 2rem;
     padding-top: 3rem;
     border-bottom: 0.1rem solid #eee;
   }
   .select-info-box {
     margin-top: 3rem;
     padding: 2rem 0;
-    box-shadow: 0 0.3rem 1rem 0 rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.3rem 1rem 0.1rem rgba(0, 0, 0, 0.1);
+    .cell-padding-common {
+      padding-bottom: 1rem;
+    }
   }
 }
 </style>
