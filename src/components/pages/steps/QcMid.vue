@@ -38,10 +38,10 @@ export default {
   width: 94vw;
   background: #f8f8f8;
   //   background: gray;
-  padding: 0 3vw;
+  padding: 0 3vw; 
   .search-box {
     margin-left: 2rem;
-    margin-right: 2rem;
+    margin-right: 2rem; 
     padding-top: 3rem;
     border-bottom: 0.1rem solid #eee;
   }
