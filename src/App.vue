@@ -52,8 +52,8 @@ export default {
   },
   watch: {
     // 监听路由变化
-    // $route(to, from) {
-    //   let ThisPage = to.name;
+    $route(to, from) {
+      let ThisPage = to.name;
     //   if (
     //     ThisPage == "Profit" ||
     //     ThisPage == "My" ||
@@ -69,25 +69,35 @@ export default {
     //     }
     //   } else {
     //     this.footShow = false;
-    //   }
-    // }
+	//   }
+		if(ThisPage == 'qcmid') {
+			this.active = 0;
+			this.changeTabbar(this.active);
+		}else if(ThisPage == 'qctail') {
+			this.active = 1;
+			this.changeTabbar(this.active);
+		}else if(ThisPage == 'qcout') {
+			this.active = 2;
+			this.changeTabbar(this.active);
+		}
+    }
   },
   methods: {
     changeTabbar(active) {
       console.log(active);
-      // switch (active) {
-      //   case 0:
-      //     this.$router.push({ name: "Invest" });
-      //     break;
-      //   case 1:
-      //     this.$router.push({ name: "Profit" });
-      //     break;
-      //   case 2:
-      //     this.$router.push({ name: "My" });
-      //     break;
-      //   case 3:
-      //     break;
-      // }
+      switch (active) {
+        case 0:
+          this.$router.push({ name: "QcMid" });
+          break;
+        case 1:
+          this.$router.push({ name: "QcTail" });
+          break;
+        case 2:
+          this.$router.push({ name: "QcOut" });
+          break;
+        // case 3:
+        //   break;
+      }
     },
     initFootShow: function() {
       console.info("路由：", this.$route);

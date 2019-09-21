@@ -17,6 +17,17 @@ export default new Router({
       path: "/",
       name: "QcMid",
       component: QcMid
-    }
+	},
+	{
+		path: "/qctail",
+		name: "QcTail",
+		component: ()=>import('@/components/pages/steps/QcTail')
+	},
+	{
+		path: "/qcout",
+		name: "QcOut",
+		component: ()=>import('@/components/pages/steps/QcOut')
+	},
+
   ]
 });
