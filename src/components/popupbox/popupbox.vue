@@ -1,114 +1,120 @@
 <template>
-    <div class="altert_container" v-if="show">
-        <section class="tip_text_container">
-            <div class="tip_icon">
-                <span></span>
-                <span></span>
-            </div>
-            <p class="tip_text">{{alertText}}</p>
-            <div class="confrim" @click="closeTip">确认</div>
-        </section>
-    </div>
+<div class="alert-container" >
+  <div class="alert-wrapper">
+      <div class="header">
+        
+          {{popTitle}}
+          <div></div>
+        
+      </div>
+      <div class="content">
+        <van-list>
+          <van-radio-group v-model="radio">
+          <van-cell v-for="index in 10" :key="index">
+						<van-radio :name='index'  class="popup-radio" >单选框 {{index}}</van-radio>
+				  </van-cell>
+          </van-radio-group>
+        </van-list>
+      </div>
+      <div class="footer">
+        <div class="confirm-box">
+          <button class="btn" @click="cliToComf">确认</button>
+          <button class="btn" @click="cancel">取消</button>
+			  </div>
+      </div>
+  </div>
+</div>
 </template>
 
 <script>
 export default {
-    name : 'caltertip',
-     props: {
-	  alertText: String,
-	  show: Boolean
+    props: {
+      popTitle : String
     },
-    methods: {
-      closeTip() {
-        // 分发自定义事件(事件名: closeTip)
-        this.$emit('closeTip')
+    data(){
+      return{
+        
+        radio:'1',
+      }
+    },
+    computed: {
+     
+    },
+    methods:{
+      cliToComf(){
+        this.$emit('closePop')
+      },
+      cancel(){
+        this.$emit('closePop')
       }
     }
 }
 </script>
 
 <style scoped lang='scss'>
- .alert_container{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 200;
-    background: rgba(0, 0, 0, .5);
-	.tip_text_container{
-      position: absolute;
+.alert-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9000;
+  background: rgba(0, 0, 0, .5);
+  .alert-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    height: 300px;
+    transform: translate(-50% ,-50%);
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    .header {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      // border-bottom: 1px solid black;
       
-      animation: tipMove .4s;
-      top: 50%;
-      left: 50%;
-      width:60%;
-      margin-top: -90px;
-      margin-left: -110px;
-      background-color: rgba(255, 255, 255, 1);
-      border: 1px;
-      padding-top: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      border-radius: 5px;
-	  .tip_icon{
-        width: 55px;
-        height: 55px;
-        border: 2px solid #f8cb86;
-        border-radius: 50%;
-        font-size: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-		span:nth-of-type(1){
-          width: 2px;
-          height: 30px;
-          background-color: #f8cb86;
-		}
-        span:nth-of-type(2){
-          width: 2px;
-          height: 2px;
-          border: 1px;
-          border-radius: 50%;
-          margin-top: 2px
-          background-color #f8cb86;
-		}
-	  .tip_text{
-        font-size :14px;
-        color :#333;
-        line-height: 20px;
-        text-align: center;
-        margin-top: 10px;
-        padding: 0 5px;
-	  }
-      .confrim{
-        position :absolute;
-        bottom: -30px;
-        font-size: 18px;
-        font-weight :bold;
-        margin-top: 10px;
-        background-color: #4cd964;
+      div {
         width: 100%;
-        text-align: center;
-        line-height: 35px;
-        border: 1px;
-        color: #fff;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-	  }
-	  }
-	}
- }
- 
-  
-   
-    
-    
+        border-top: 1px solid black;
+      }
+      
+    }
+    .content {
+      margin-top: 70px;
+      // height: 80%;
+      overflow-y: scroll;
+      margin-bottom: 10px;
+      flex: 1;
 
+    }
+    .footer {
+      height: 40px;
       
-       
-      
+      width: 100%;
+      .confirm-box {
+        float: right;
+        margin-right: 15px;
+        margin-top: 7px;
+        .btn {
+          border: none;
+          outline: none;
+          background-color: rgb(255, 255, 255);
+          font-size: 16px;
+          margin-right: 5px;
+          &:hover {
+            background-color: pink;
+          }
+        }
+      }
+    }
+  }
+}
 </style>

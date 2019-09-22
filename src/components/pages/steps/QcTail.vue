@@ -18,7 +18,8 @@
 				value="请选择"
 				@click="showPopup"
 				/>
-				<Popupbox :show='show'/>
+				<Popupbox  v-show="show" :popTitle="popTitle" @closePop="closePop"/>
+				
 				<van-cell
 				title="PO列表"
 				is-link
@@ -27,11 +28,11 @@
 				value="请选择"
 				class="cell-padding-common"
 				/>
-				<van-cell-group>
+				<!-- <van-cell-group>
 					<van-field v-model="valuePo" label="PO" placeholder="请输入PO" class="cell-padding-common" />
 					<van-field v-model="valuePo" label="贴纸号" placeholder="请输入贴纸号" class="cell-padding-common" />
 					
-				</van-cell-group>
+				</van-cell-group> -->
 			</div>
 		</div>
 	</div>
@@ -49,6 +50,7 @@ import Popupbox from '@/components/popupbox/popupbox'
 		data(){
 			return{
 				title : '尾查QC',
+				popTitle: '查询PO',
 				value :'',
 				show : false,
 				radio : '1',
@@ -65,7 +67,10 @@ import Popupbox from '@/components/popupbox/popupbox'
 
 			},
 			showPopup(){
-				this.show = true
+				this.show = !this.show
+			},
+			closePop(){
+				this.show = false
 			}
 		}
 }
@@ -92,7 +97,15 @@ import Popupbox from '@/components/popupbox/popupbox'
 	  border-radius: 0.5rem;
 	  box-shadow: 0 0.3rem 1rem 0.1rem rgba(0, 0, 0, 0.1);
 	  
-	
+	.ze {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 999999;
+		background: black;
+	}
     .cell-padding-common {
       padding-bottom: 1rem;
     }
